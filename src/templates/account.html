@@ -12,6 +12,25 @@ My Profile
                 <p class="text-secondary">{{ current_user.email }}</p>
             </div>
         </div>
+<form class="form-check" action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>{{ form.username.label }}<br>
+        {{ form.username(size=32) }}<br>
+        {% for error in form.username.errors %}
+        <span style="color : red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.email.label }}<br>
+        {{ form.email(size=32) }}<br>
+        {% for error in form.email.errors %}
+        <span style="color : red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.submit() }}
+    </p>
+</form>
     </div>
 
 {% endblock %}
