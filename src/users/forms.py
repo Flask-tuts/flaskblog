@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
-from flask_login import current_user
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from src.models import User
+from flask_wtf.file import FileField, FileAllowed
+from flask_login import current_user
 
 
 class RegistrationForm(FlaskForm):
@@ -64,4 +64,3 @@ class ResetPasswordForm(FlaskForm):
     password = PasswordField('Enter new Password', validators=[DataRequired()])
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Submit')
-

@@ -1,7 +1,7 @@
-from flask import Blueprint, request, render_template, redirect, url_for, flash, abort
-from src.posts.forms import PostForm
-from flask_login import login_required, current_user
+from flask import Blueprint, flash, request, render_template, redirect, url_for, abort
+from flask_login import current_user, login_required
 from src import db
+from src.posts.forms import PostForm
 from src.models import Post
 
 posts = Blueprint('posts', __name__)
@@ -55,7 +55,3 @@ def delete_post(post_id):
     db.session.commit()
     flash('Post Deleted successfully!', 'success')
     return redirect(url_for('main.index'))
-
-
-
-
