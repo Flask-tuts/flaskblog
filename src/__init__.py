@@ -11,9 +11,15 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'users.login'
 mail = Mail(app)
 
 
-from src import routes, models
+from src.users.routes import users
+from src.posts.routes import posts
+from src.main.routes import main
 
+
+app.register_blueprint(users)
+app.register_blueprint(posts)
+app.register_blueprint(main)
