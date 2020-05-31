@@ -6,8 +6,8 @@ My Profile
 {% block content %}
     <div class='content-section'>
         <div class="media">
-            <img class="rounded-circle account-img" src="{{ image_file }}">
-            <div class="media-body">
+            <img class="rounded-circle account-img m-2" src="{{ image_file }}", height="100" width="100">
+            <div class="media-body m-4">
                 <h2 class="account-heading">{{ current_user.username }}</h2>
                 <p class="text-secondary">{{ current_user.email }}</p>
             </div>

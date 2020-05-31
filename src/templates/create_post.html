@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block head %}
+    {{ legend }}
+{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title() }}
+        {% for error in form.title.errors%}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.content.label }}<br>
+        {{ form.content() }}
+        {% for error in form.content.errors%}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.submit() }}
+    </p>
+</form>
+{% endblock %}
