@@ -26,9 +26,9 @@
     </p>
     <p>
         {{ form.submit() }}
-    <small class="text-muted m-1"><a href="{{ url_for('request_reset') }}">Forgot Password?</a></small>
+    <small class="text-muted m-1"><a href="{{ url_for('users.request_reset') }}">Forgot Password?</a></small>
     </p>
 </form>
 
-<small class="text-muted">New User? <a href="{{ url_for('register')}}">Sign Up here!</a></small>
+<small class="text-muted">New User? <a href="{{ url_for('users.register')}}">Sign Up here!</a></small>
 {% endblock %}
