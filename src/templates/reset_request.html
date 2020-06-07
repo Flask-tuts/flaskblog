@@ -1,20 +1,37 @@
 {% extends 'base.html' %}
 {% block head %}
-    Reset Password
+    <header class="masthead" style="background-image: url({{ url_for('static', filename='img/home-bg.jpg') }})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Blog 4 You</h1>
+            <span class="subheading">Writing is the painting of the voice.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 {% endblock %}
 
 {% block content %}
-<form action="" method="post">
-    {{ form.hidden_tag() }}
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+            {{ form.email.label }}<br>
+            {{ form.email(size=32, placeholder='Email') }}
+            {% for error in form.email.errors%}
+            <p class="help-block text-danger" ">[{{ error }}]</span>
+            {% endfor %}
+            </div>
+        </div>
     <p>
-        {{ form.email.label }}<br>
-        {{ form.email(size=32) }}
-        {% for error in form.email.errors%}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.submit() }}
+        {{ form.submit(class='btn btn-outline-info') }}
     </p>
 </form>
 {% endblock %}

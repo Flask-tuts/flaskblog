@@ -2,24 +2,38 @@
 
 
 {% block head %}
-    Post
+    <header class="masthead" style="background-image: url({{ url_for('static', filename='img/post-bg.jpg') }})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Man must explore, and this is exploration at its greatest</h1>
+            <h2 class="subheading">Explore our blog for more exciting content</h2>
+            <span class="meta">-Team (Blog 4 You)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 {% endblock %}
 
 
 {% block content %}
-        <div class="card">
-            <article class="media-content-section">
+        <div class="card m-4">
+            <article class="media-content-section m-4">
                 <div class="media-body">
                     <div class="article-metadata">
                         <img class="rounded-circle" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" height="50" width="50">
                         <a class="mr-2" href="{{ url_for('users.user_post', username=post.author.username) }}">{{ post.author.username }}</a>
-                        <small class="text-muted">{{ post.timestamp.strftime('%Y-%m-%d') }}</small><hr>
+                        <small class="text-muted">{{ post.timestamp.strftime('%Y-%m-%d') }}</small>
                         {% if post.author == current_user %}
-                        <div>
-                            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id = post.id) }}">Update</a>
-                            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        <div class="mt-4">
+                            <a class="btn btn-outline-info btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id = post.id) }}">Update</a>
+                            <button type="button" class="btn btn-outline-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
                         </div>
                         {% endif %}
+                        <hr>
                     </div>
                     <h2 class="article-title">{{ post.title }}</h2>
                     <p class="article-content">{{ post.content }}</p>

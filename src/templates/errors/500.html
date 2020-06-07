@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 {% block head %}
-Oops! Something went wrong (500)
-{% endblock %}
-
-{% block content %}
-We are facing some trouble at our end. Please try again later.
+<header class="masthead" style="background-image: url({{ url_for('static', filename='img/home-bg.jpg') }})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Oops! Something went wrong (500)</h1>
+            <span class="subheading">We are facing some trouble at our end. Please try again in near future.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 {% endblock %}
 

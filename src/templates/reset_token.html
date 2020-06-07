@@ -1,27 +1,47 @@
 {% extends 'base.html' %}
 {% block head %}
-Reset Password
+<header class="masthead" style="background-image: url({{ url_for('static', filename='img/home-bg.jpg') }})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Blog 4 You</h1>
+            <span class="subheading">Writing is the painting of the voice.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 {% endblock %}
 
 {% block content %}
-<form class="form-check" action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <form class="form-check" action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
         {{ form.password.label }}<br>
-        {{ form.password(size=32) }}<br>
+        {{ form.password(size=32, placeholder="Enter new Password") }}<br>
         {% for error in form.password.errors %}
-         <span style="color : red;">[{{ error }}]</span>
+                <p class="help-block text-danger">[{{ error }}]</p>
         {% endfor %}
-    </p>
-    <p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
         {{ form.password2.label }}<br>
-        {{ form.password2(size=32) }}<br>
+        {{ form.password2(size=32,  placeholder="Repeat Password") }}<br>
         {% for error in form.password2.errors %}
-        <span style="color : red;">[{{ error }}]</span>
+                <p class="help-block text-danger">[{{ error }}]</p>
         {% endfor %}
-    </p>
+            </div>
+        </div>
     <p>
-        {{ form.submit() }}
+        {{ form.submit(class='btn btn-outline-info') }}
     </p>
 </form>
 {% endblock %}

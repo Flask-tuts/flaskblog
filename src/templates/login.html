@@ -1,34 +1,60 @@
 {% extends 'base.html' %}
 {% block head %}
-    Login
+    <header class="masthead" style="background-image: url({{ url_for('static', filename='img/home-bg.jpg') }})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Sign In</h1>
+            <span class="subheading">It's the possibility of having a dream come true that makes life interesting.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 {% endblock %}
 
 {% block content %}
-<form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.email.label }}<br>
-        {{ form.email(size=32) }}
-        {% for error in form.email.errors%}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.password.label }}<br>
-        {{ form.password(size=32) }}
-        {% for error in form.password.errors%}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.remember_me() }}
-        {{ form.remember_me.label }}
-    </p>
-    <p>
-        {{ form.submit() }}
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                {{ form.email.label }}
+                {{ form.email(size=32, placeholder='Email') }}
+                {% for error in form.email.errors%}
+                <p class="help-block text-danger">[{{ error }}]</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                {{ form.password.label }}<br>
+                {{ form.password(size=32, placeholder='Password') }}
+                {% for error in form.password.errors%}
+                <p class="help-block text-danger">[{{ error }}]</p>
+                 {% endfor %}
+            </div>
+        </div>
+        <div class="control-group mt-4">
+            <div class="form-group form-check">
+                {{ form.remember_me() }}
+                <small class="text-muted">{{ form.remember_me.label }}</small>
+            </div>
+        </div>
+        <div id="success"></div>
+    <div class="form-group">
+        {{ form.submit(class='btn btn-outline-info') }}
     <small class="text-muted m-1"><a href="{{ url_for('users.request_reset') }}">Forgot Password?</a></small>
-    </p>
-</form>
+    </div>
+        </form>
+          <small class="text-muted">New User? <a href="{{ url_for('users.register')}}">Sign Up here!</a></small>
+      </div>
+    </div>
+</div>
 
-<small class="text-muted">New User? <a href="{{ url_for('users.register')}}">Sign Up here!</a></small>
+
 {% endblock %}

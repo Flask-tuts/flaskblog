@@ -1,47 +1,67 @@
 {% extends 'base.html' %}
 {% block head %}
-My Profile
+<header class="masthead" style="background-image: url({{ url_for('static', filename='img/home-bg.jpg') }})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>My Profile</h1>
+            <span class="subheading">First impression is the last one.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 {% endblock %}
 
 {% block content %}
     <div class='content-section'>
         <div class="media">
-            <img class="rounded-circle account-img m-2" src="{{ image_file }}", height="100" width="100">
+            <img class="rounded-circle account-img m-4" src="{{ image_file }}", height="100" width="100">
             <div class="media-body m-4">
                 <h2 class="account-heading">{{ current_user.username }}</h2>
                 <p class="text-secondary">{{ current_user.email }}</p>
             </div>
         </div>
+        <div><h4>Edit Profile</h4></div>
+        <div class="card">
 <form class="form-check" action="" method="post" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
-    <div class="form-group">
-    {{ form.username.label }}<br>
-        {{ form.username(size=32) }}<br>
-        {% for error in form.username.errors %}
-        <span style="color : red;">[{{ error }}]</span>
-        {% endfor %}
+    <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+            {{ form.username.label }}<br>
+            {{ form.username(size=32, placeholder='Username') }}<br>
+            {% for error in form.username.errors %}
+            <p class="help-block text-danger">[{{ error }}]</p>
+            {% endfor %}
+        </div>
     </div>
-    <div class="form-group">
+    <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
         {{ form.email.label }}<br>
-        {{ form.email(size=32) }}<br>
+        {{ form.email(size=32, placeholder='Email Address') }}<br>
         {% for error in form.email.errors %}
-        <span style="color : red;">[{{ error }}]</span>
+        <p class="help-block text-danger">[{{ error }}]</p>
         {% endfor %}
+        </div>
     </div>
-    <div class="form-group">
-        {{ form.picture.label() }}<br>
-        {{ form.picture() }}<br>
+    <div class="control-group mt-4">
+        <div class="form-group">
+            <small class="text-muted">{{ form.picture.label() }}</small><br>
+        {{ form.picture(class='text-muted', placeholders='Update profile picture') }}<br>
         {% if form.picture.errors %}
             {% for error in form.picture.errors %}
-                <span class="text-danger">{{ error }}</span>
+                <p class="help-block text-danger">{{ error }}</p>
             {% endfor %}
         {% endif %}
+        </div>
     </div>
     <div class="form-group">
-        {{ form.submit() }}
+        {{ form.submit(class='btn btn-outline-info mt-4') }}
     </div>
 </form>
     </div>
-
+    </div>
 {% endblock %}
 
